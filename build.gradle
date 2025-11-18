@@ -1,0 +1,16 @@
+plugins {
+    id 'com.github.ben-manes.versions' version '0.53.0'
+    id 'org.nosphere.apache.rat' version '0.8.1'
+}
+
+group = 'org.apache.groovy'
+version = '1.0-SNAPSHOT'
+
+ext {
+    groovyVersion = '5.0.2'
+    eclipseCollectionsVersion = '13.0.0'
+}
+
+tasks.named('rat') {
+    excludes = ['**/build/**', '.idea', 'gradle/wrapper', '**/.gradle', '**/*.log']
+}
