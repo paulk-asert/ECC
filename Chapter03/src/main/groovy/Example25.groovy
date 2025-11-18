@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
-include 'Chapter01',
-        'Chapter02',
-        'Chapter03'
+import org.eclipse.collections.impl.list.Interval
+
+var interval = Interval.oneTo(10)
+assert interval.makeString(',') == '1,2,3,4,5,6,7,8,9,10'

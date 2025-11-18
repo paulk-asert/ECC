@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
-include 'Chapter01',
-        'Chapter02',
-        'Chapter03'
+var sb = new StringBuilder()
+for (int i in 1..10) {
+    if (i > 1) sb << ','
+    sb << i
+}
+assert sb.toString() == '1,2,3,4,5,6,7,8,9,10'
