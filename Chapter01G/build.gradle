@@ -16,5 +16,4 @@
 
 plugins {
     id 'groovy-setup'
-    id 'ec-special'
 }

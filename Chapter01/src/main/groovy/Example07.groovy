@@ -18,8 +18,9 @@ import org.eclipse.collections.api.factory.Lists
 
 var integers = Lists.immutable.of(1, 2, 3, 4, 5)
 var grouped = integers.groupBy(i -> i % 2 == 0)
-var partitioned = integers.partition(i -> i % 2 == 0)
+assert grouped.get(true) == [2, 4]
+assert grouped.get(false) == [1, 3, 5]
 
-assert grouped == [(false): [1, 3, 5], (true): [2, 4]]
+var partitioned = integers.partition(i -> i % 2 == 0)
 assert partitioned.selected == [2, 4]
 assert partitioned.rejected == [1, 3, 5]

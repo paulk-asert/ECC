@@ -14,7 +14,15 @@
  * limitations under the License.
  */
 
-plugins {
-    id 'groovy-setup'
-    id 'ec-special'
-}
+
+import util.Generation
+
+import static util.Generation.ALL
+
+assert ALL.countWith(Generation::yearsCountEquals, 15) == 0
+
+assert ALL.countWith(Generation::yearsCountEquals, 16) == 3
+
+assert ALL.countWith(Generation::yearsCountEquals, 17) == 2
+
+assert ALL.countWith(Generation::yearsCountEquals, 18) == 2

@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-plugins {
-    id 'groovy-setup'
-    id 'ec-special'
-}
+import static util.Generation.*
+
+assert find(1912) === GREATEST
+assert find(1970) === X
+assert find(1989) === MILLENNIAL
+assert find(2015) === ALPHA
+assert find(1000) === UNCLASSIFIED

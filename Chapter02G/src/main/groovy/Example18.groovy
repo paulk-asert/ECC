@@ -15,19 +15,16 @@
  */
 
 import org.eclipse.collections.api.factory.BiMaps
-// we disabled DGM collect in the build so instead use static import
-import static org.codehaus.groovy.runtime.DefaultGroovyMethods.collect
 
 var bimap = BiMaps.immutable.with(
         1, 'One', 2, 'Two', 3, 'Three'
 )
-assert collect(1..3,i -> bimap.get(i)) == ['One', 'Two', 'Three']
-assert collect(1..4, i ->
-        bimap.getOrDefault(i, 'None')
-) == ['One', 'Two', 'Three', 'None']
+assert (1..3).collect(i -> bimap.get(i)) == ['One', 'Two', 'Three']
+assert (1..4).collect(i -> bimap.getOrDefault(i, 'None')) == ['One', 'Two', 'Three', 'None']
 
 var inverse = bimap.inverse()
-assert collect(['One', 'Two', 'Three'], s -> inverse.get(s)) == 1..3
-assert collect(['One', 'Two', 'Three', 'Four'], s ->
+assert ['One', 'Two', 'Three'].collect(s ->
+        inverse.get(s)) == 1..3
+assert ['One', 'Two', 'Three', 'Four'].collect(s ->
         inverse.getOrDefault(s, 0)
 ) == [1, 2, 3, 0]

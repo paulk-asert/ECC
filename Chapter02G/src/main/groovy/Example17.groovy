@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-import static org.codehaus.groovy.runtime.DefaultGroovyMethods.collect
-
 var map = [:]
 ['Apple', 'Banana', 'Apple', 'Pear', 'Banana', 'Apple'].each{ map.merge(it, 1, Integer::sum) }
 assert map == [Apple:3, Banana:2, Pear:1]
@@ -25,6 +23,4 @@ assert !map.Orange
 map = [:].withDefault{ 0 }
 ['Apple', 'Banana', 'Apple', 'Pear', 'Banana', 'Apple'].each{ map.merge(it, 1, Integer::sum) }
 
-assert collect(['Apple', 'Banana', 'Pear', 'Orange']) { map[it] } == 3..0
-// preferred Groovy style below but use above because we disabled DG< collect
-//assert ['Apple', 'Banana', 'Pear', 'Orange'].collect{ map[it] } == 3..0
+assert ['Apple', 'Banana', 'Pear', 'Orange'].collect{ map[it] } == 3..0

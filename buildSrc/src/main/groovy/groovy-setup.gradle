@@ -27,18 +27,6 @@ dependencies {
     implementation "org.apache.groovy:groovy-test:$groovyVersion"
     implementation "org.eclipse.collections:eclipse-collections-api:$eclipseCollectionsVersion"
     implementation "org.eclipse.collections:eclipse-collections:$eclipseCollectionsVersion"
-
-//    testImplementation platform('org.junit:junit-bom:5.10.0')
-//    testImplementation 'org.junit.jupiter:junit-jupiter'
-//    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-//test {
-//    useJUnitPlatform()
-//}
-
-tasks.withType(GroovyCompile).configureEach {
-    groovyOptions.forkOptions.jvmArgs += ['-Dgroovy.extension.disable=collect']
 }
 
 java {
@@ -65,7 +53,6 @@ sourceSets.main.allSource.filter{ it.name.endsWith('.groovy') }.each { source ->
         mainClass = base.replaceAll('/', '.')
         jvmArgs = [
                 '--enable-native-access=ALL-UNNAMED',  // avoid warning on JDK25
-                '-Dgroovy.extension.disable=collect'   // don't override EC behavior
         ]
     }
     runAll.configure {

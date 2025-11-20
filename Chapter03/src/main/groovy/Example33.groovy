@@ -14,7 +14,17 @@
  * limitations under the License.
  */
 
-plugins {
-    id 'groovy-setup'
-    id 'ec-special'
-}
+import org.eclipse.collections.api.block.predicate.Predicate2
+import util.Generation
+
+import static util.Generation.ALL
+
+Predicate2<Generation, Integer> yearsCountEquals = (gen, size) -> gen.years().size() == size
+
+assert ALL.countWith(yearsCountEquals, 15) == 0
+
+assert ALL.countWith(yearsCountEquals, 16) == 3
+
+assert ALL.countWith(yearsCountEquals, 17) == 2
+
+assert ALL.countWith(yearsCountEquals, 18) == 2

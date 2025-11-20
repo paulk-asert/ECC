@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Licensed under the Apache License, Version 2.0 (the "License")\n
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -15,8 +15,10 @@
  */
 
 var integers = 1..5
+
 var grouped = integers.groupBy(i -> i % 2 == 0)
 assert grouped == [(false): [1, 3, 5], (true): [2, 4]]
 
-var split = integers.split(i -> i % 2 == 0)
-assert split == [[2, 4], [1, 3, 5]]
+var (evens, odds) = integers.split(i -> i % 2 == 0)
+assert evens == [2, 4]
+assert odds == [1, 3, 5]

@@ -23,7 +23,7 @@ var lazyIterable = integers.asLazy()
 var stream = integers.stream()
 
 assert integers == lazyIterable.toList()
-assert integers == lazyIterable.toList()
+assert integers == lazyIterable.toList() // lazyIterable is reusable
 assert integers == stream.toList()
 assertThrows(IllegalStateException) {
     assert integers == stream.toList()

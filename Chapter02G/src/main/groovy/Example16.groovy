@@ -15,10 +15,7 @@
  */
 
 import org.eclipse.collections.api.factory.Bags
-import static org.codehaus.groovy.runtime.DefaultGroovyMethods.collect
 
 var bag = Bags.mutable.empty()
 ['Apple', 'Banana', 'Apple', 'Pear', 'Banana', 'Apple'].each{ bag << it }
-assert collect(['Apple', 'Banana', 'Pear', 'Orange']) { bag.occurrencesOf(it) } == 3..0
-// preferred Groovy style below but use above because we disabled DGM collect
-//assert ['Apple', 'Banana', 'Pear', 'Orange'].collect{ bag.occurrencesOf(it) } == 3..0
+assert ['Apple', 'Banana', 'Pear', 'Orange'].collect{ bag.occurrencesOf(it) } == 3..0

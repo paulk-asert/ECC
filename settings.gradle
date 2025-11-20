@@ -15,5 +15,8 @@
  */
 
 include 'Chapter01',
+        'Chapter01G',
         'Chapter02',
-        'Chapter03'
+        'Chapter02G',
+        'Chapter03',
+        'Chapter03G'

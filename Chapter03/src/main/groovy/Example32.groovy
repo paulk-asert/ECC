@@ -14,7 +14,14 @@
  * limitations under the License.
  */
 
-plugins {
-    id 'groovy-setup'
-    id 'ec-special'
-}
+import static util.Generation.ALL
+
+assert ALL.count(gen -> gen.years().size() > 15) == 11
+
+assert ALL.count(gen -> gen.years().size() < 15) == 0
+
+assert ALL.count(gen -> gen.years().size() == 15) == 0
+
+assert ALL.count(gen -> gen.years().size() == 16) == 3
+
+assert ALL.count(gen -> gen.years().size() == 17) == 2
