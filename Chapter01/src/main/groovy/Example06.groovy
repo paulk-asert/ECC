@@ -1,5 +1,3 @@
-import java.util.stream.Collectors
-
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -15,6 +13,8 @@ import java.util.stream.Collectors
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import java.util.stream.Collectors
 
 var integers = 1..5
 var grouped = integers.stream()

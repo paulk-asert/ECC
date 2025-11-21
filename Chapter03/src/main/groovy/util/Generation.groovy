@@ -20,7 +20,6 @@ import org.eclipse.collections.api.factory.Lists
 import org.eclipse.collections.api.factory.primitive.IntObjectMaps
 import org.eclipse.collections.api.list.ImmutableList
 import org.eclipse.collections.api.map.primitive.ImmutableIntObjectMap
-import org.eclipse.collections.api.map.primitive.MutableIntObjectMap
 import org.eclipse.collections.impl.list.primitive.IntInterval
 
 // Example 29 + 31 + 34 + 43
