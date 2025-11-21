@@ -41,9 +41,6 @@ enum Generation {
             Lists.immutable.with(values())
 
     private static final ImmutableIntObjectMap<Generation> BY_YEAR = groupEachByYear()
-static {
-    println 'BY_YEAR = ' + BY_YEAR
-}
     private static ImmutableIntObjectMap<Generation> groupEachByYear() {
         // Build an ImmutableIntObjectMap of year (key) to util.Generation (value)
         // Loop over all Generations and all years for each util.Generation
