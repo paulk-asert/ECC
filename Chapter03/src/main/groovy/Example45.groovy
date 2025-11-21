@@ -13,32 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id 'com.github.ben-manes.versions' version '0.53.0'
-    id 'org.nosphere.apache.rat' version '0.8.1'
+
+import util.Generation
+import util.PresidentOfUSA
+
+import static util.Generation.*
+
+var counts = [:]
+
+for (PresidentOfUSA president in PresidentOfUSA.ALL) {
+    for (Generation gen in president.generationsServed) {
+        counts.merge(gen, 1, Integer::sum)
+    }
 }
 
-repositories {
-    mavenCentral()
-}
-
-group = 'org.apache.groovy'
-version = '1.0-SNAPSHOT'
-
-ext {
-    groovyVersion = '5.0.2'
-    eclipseCollectionsVersion = '13.0.0'
-}
-
-tasks.named('rat') {
-    excludes = ['**/build/**', '.idea', 'gradle/wrapper', '**/.gradle', '**/*.log']
-}
-
-tasks.register('runAll') {
-    group 'Application'
-    dependsOn(provider {
-        subprojects.collect {
-            it.tasks.grep { it.name.startsWith('run') }
-        }
-    })
-}
+assert 5 == counts[GREATEST]
+assert 4 == counts[SILENT]
+assert 4 == counts[BOOMER]
+assert 4 == counts[X]
+assert 4 == counts[MILLENNIAL]
+assert 3 == counts[Z]
+assert 3 == counts[ALPHA]

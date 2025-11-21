@@ -1,4 +1,3 @@
-package util
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -15,6 +14,8 @@ package util
  * limitations under the License.
  */
 
+package util
+
 import org.eclipse.collections.api.factory.Lists
 import org.eclipse.collections.api.factory.primitive.IntObjectMaps
 import org.eclipse.collections.api.list.ImmutableList
@@ -22,7 +23,7 @@ import org.eclipse.collections.api.map.primitive.ImmutableIntObjectMap
 import org.eclipse.collections.api.map.primitive.MutableIntObjectMap
 import org.eclipse.collections.impl.list.primitive.IntInterval
 
-// Example 29 + 31 + 34
+// Example 29 + 31 + 34 + 43
 enum Generation {
     UNCLASSIFIED("Unclassified", 1776, 1842),
     PROGRESSIVE("Progressive util.Generation", 1843, 1859),

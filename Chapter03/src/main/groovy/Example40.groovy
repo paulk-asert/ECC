@@ -13,32 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id 'com.github.ben-manes.versions' version '0.53.0'
-    id 'org.nosphere.apache.rat' version '0.8.1'
-}
 
-repositories {
-    mavenCentral()
-}
+import org.eclipse.collections.api.factory.Bags
+import org.eclipse.collections.api.factory.primitive.CharBags
 
-group = 'org.apache.groovy'
-version = '1.0-SNAPSHOT'
+var strings = Bags.mutable.with(
+        'A',
+        'B', 'B',
+        'C', 'C', 'C',
+        'D', 'D', 'D', 'D'
+)
 
-ext {
-    groovyVersion = '5.0.2'
-    eclipseCollectionsVersion = '13.0.0'
-}
+assert 'A' == strings.bottomOccurrences(1).first.one
 
-tasks.named('rat') {
-    excludes = ['**/build/**', '.idea', 'gradle/wrapper', '**/.gradle', '**/*.log']
-}
-
-tasks.register('runAll') {
-    group 'Application'
-    dependsOn(provider {
-        subprojects.collect {
-            it.tasks.grep { it.name.startsWith('run') }
-        }
-    })
-}
+char[] source = [
+        'A',
+        'B', 'B',
+        'C', 'C', 'C',
+        'D', 'D', 'D', 'D'
+]
+var chars = CharBags.mutable.with(*source)
+char expected = 'A'
+assert expected == chars.bottomOccurrences(1).first.one

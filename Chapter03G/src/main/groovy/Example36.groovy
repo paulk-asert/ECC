@@ -13,32 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id 'com.github.ben-manes.versions' version '0.53.0'
-    id 'org.nosphere.apache.rat' version '0.8.1'
-}
 
-repositories {
-    mavenCentral()
-}
+import org.eclipse.collections.api.factory.Bags
 
-group = 'org.apache.groovy'
-version = '1.0-SNAPSHOT'
+var strings = Bags.mutable.empty()
+strings << 'A'
+strings << 'B'
+strings << 'B'
+strings << 'C'
 
-ext {
-    groovyVersion = '5.0.2'
-    eclipseCollectionsVersion = '13.0.0'
-}
+strings.addOccurrences('C', 2)
+strings << 'D'
+strings.addOccurrences('D', 3)
 
-tasks.named('rat') {
-    excludes = ['**/build/**', '.idea', 'gradle/wrapper', '**/.gradle', '**/*.log']
-}
-
-tasks.register('runAll') {
-    group 'Application'
-    dependsOn(provider {
-        subprojects.collect {
-            it.tasks.grep { it.name.startsWith('run') }
-        }
-    })
-}
+assert 1..4 == 'ABCD'.toList().collect {strings.occurrencesOf(it) }

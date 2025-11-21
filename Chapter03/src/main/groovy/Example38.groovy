@@ -13,32 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id 'com.github.ben-manes.versions' version '0.53.0'
-    id 'org.nosphere.apache.rat' version '0.8.1'
-}
 
-repositories {
-    mavenCentral()
-}
+import org.eclipse.collections.api.factory.primitive.IntBags
+import org.eclipse.collections.impl.list.primitive.IntInterval
 
-group = 'org.apache.groovy'
-version = '1.0-SNAPSHOT'
+var ints = IntBags.mutable.with(
+        1,
+        2, 2,
+        3, 3, 3,
+        4, 4, 4, 4
+)
 
-ext {
-    groovyVersion = '5.0.2'
-    eclipseCollectionsVersion = '13.0.0'
-}
-
-tasks.named('rat') {
-    excludes = ['**/build/**', '.idea', 'gradle/wrapper', '**/.gradle', '**/*.log']
-}
-
-tasks.register('runAll') {
-    group 'Application'
-    dependsOn(provider {
-        subprojects.collect {
-            it.tasks.grep { it.name.startsWith('run') }
-        }
-    })
-}
+IntInterval.oneTo(4).forEach(i -> { assert i == ints.occurrencesOf(i) })

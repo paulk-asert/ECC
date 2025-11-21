@@ -35,7 +35,7 @@ java {
     }
 }
 
-def runAll = tasks.register("run.${project.name}.All") {
+def runAll = tasks.register("run.${project.name}.All") {t ->
     group 'Application'
 }
 

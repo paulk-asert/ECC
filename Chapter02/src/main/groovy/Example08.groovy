@@ -70,6 +70,7 @@ Bag<String> iterableForEach(Iterable<String> iterable) {
 
 Bag<String> iterableEach(Iterable<String> iterable) {
     var result = Bags.mutable.<String>empty()
-    iterable.each(s -> result.add(s))
+    Procedure add = result::add
+    iterable.each(add)
     result
 }

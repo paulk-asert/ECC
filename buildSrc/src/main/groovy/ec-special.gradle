@@ -20,7 +20,7 @@
 // E.g. ImmutableList#groupBy and DGM#groupBy return equivalent maps
 // but the former returns ImmutableListMultimap whereas the latter returns LinkedHashMap.
 
-var disable = '-Dgroovy.extension.disable=collect,groupBy'
+var disable = '-Dgroovy.extension.disable=collect,groupBy,countBy'
 
 tasks.withType(GroovyCompile).configureEach {
     groovyOptions.forkOptions.jvmArgs += [disable]
