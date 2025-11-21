@@ -47,7 +47,7 @@ enum Generation {
         // Loop over all Generations and all years for each util.Generation
         // Inject the map into each util.Generation and each year
         // Use withKeyValue to map the year to the util.Generation
-        MutableIntObjectMap<Generation> map = IntObjectMaps.mutable.empty()
+        var map = IntObjectMaps.mutable.empty()
         ALL.injectInto(
                 map, (map1, generation) ->
                 generation.years().injectInto(
@@ -63,7 +63,7 @@ enum Generation {
         BY_YEAR.getIfAbsent(year, () -> UNCLASSIFIED)
     }
 
-    private final String name
+    final String name
     private final IntInterval years
 
     Generation(String name, int from, int to) {
@@ -73,10 +73,6 @@ enum Generation {
 
     IntInterval years() {
         years
-    }
-
-    String getName() {
-        name
     }
 
     boolean yearsCountEquals(int years) {

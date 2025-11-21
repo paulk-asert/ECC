@@ -56,22 +56,14 @@ enum PresidentOfUSA {
         BORN_IN.get(generation)
     }
 
-    private final String name
-    private final int birthYear
+    final String name
+    final int birthYear
     final IntInterval years
 
     PresidentOfUSA(String name, int birthYear, int firstYearElected, int lastYearInOffice) {
         this.name = name
         this.birthYear = birthYear
         years = IntInterval.fromTo(firstYearElected, lastYearInOffice)
-    }
-
-    int getBirthYear() {
-        birthYear
-    }
-
-    String getName() {
-        name
     }
 
     int getYearsServed() {
