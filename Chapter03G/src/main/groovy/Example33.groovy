@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import util.Generation
-
 import static util.Generation.ALL
 
-assert ALL.countWith(Generation::yearsCountEquals, 15) == 0
+var yearsCountEquals = (gen, size) -> gen.years.size() == size
 
-assert ALL.countWith(Generation::yearsCountEquals, 16) == 3
+assert ALL.count(yearsCountEquals.rcurry(15)) == 0
 
-assert ALL.countWith(Generation::yearsCountEquals, 17) == 2
+assert ALL.count(yearsCountEquals.rcurry(16)) == 3
 
-assert ALL.countWith(Generation::yearsCountEquals, 18) == 2
+assert ALL.count(yearsCountEquals.rcurry(17)) == 2
+
+assert ALL.count(yearsCountEquals.rcurry(18)) == 2

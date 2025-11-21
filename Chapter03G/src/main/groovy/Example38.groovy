@@ -19,3 +19,6 @@ import org.eclipse.collections.api.factory.primitive.IntBags
 var nums = (1..4).collectMany(i -> [i] * i)
 var ints = IntBags.mutable.with(*nums)
 assert (1..4).every(i -> ints.occurrencesOf(i) == i)
+
+// not efficient but count method emulates Bag#occurrencesOf
+assert (1..4).every(i -> nums.count(i) == i)

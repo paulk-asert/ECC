@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-import util.Generation
+var strings = [
+        'A',
+        'B', 'B',
+        'C', 'C', 'C',
+        'D', 'D', 'D', 'D'
+]
 
-import static util.Generation.ALL
+var count = strings.countBy()
 
-assert ALL.countWith(Generation::yearsCountEquals, 15) == 0
-
-assert ALL.countWith(Generation::yearsCountEquals, 16) == 3
-
-assert ALL.countWith(Generation::yearsCountEquals, 17) == 2
-
-assert ALL.countWith(Generation::yearsCountEquals, 18) == 2
+var top = count.sort{ e -> -e.value }
+assert 'D' == top.keySet()[0]
+// Example 40
+assert 'A' == top.keySet()[-1]

@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-import util.Generation
+import util.PresidentOfUSA
 
-import static util.Generation.ALL
+import static util.Generation.*
 
-assert ALL.countWith(Generation::yearsCountEquals, 15) == 0
-
-assert ALL.countWith(Generation::yearsCountEquals, 16) == 3
-
-assert ALL.countWith(Generation::yearsCountEquals, 17) == 2
-
-assert ALL.countWith(Generation::yearsCountEquals, 18) == 2
+var counts = PresidentOfUSA.ALL.countBy(PresidentOfUSA::getFirstGenerationServed)
+assert 5 == counts[GREATEST]
+assert 3 == counts[SILENT]
+assert 3 == counts[BOOMER]
+assert 3 == counts[X]
+assert 3 == counts[MILLENNIAL]
+assert 2 == counts[Z]
+assert 2 == counts[ALPHA]
